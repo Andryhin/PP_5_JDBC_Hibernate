@@ -30,7 +30,7 @@ public class Util {
         return connection;
     }
 
-    public static SessionFactory getConnectionHibernate() {
+    public static SessionFactory getSessionFactory() {
 
         try {
             Configuration configuration = new Configuration()
