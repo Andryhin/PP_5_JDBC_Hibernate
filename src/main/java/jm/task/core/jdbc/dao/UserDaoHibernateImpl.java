@@ -15,7 +15,7 @@ public class UserDaoHibernateImpl implements UserDao {
             " lastName varchar(50), age tinyint)";
     private static final String DROP_TABLE_USERS = "DROP TABLE IF EXISTS Users";
 
-    private SessionFactory sessionFactory = Util.getSessionFactory();
+    private final SessionFactory sessionFactory = Util.getSessionFactory();
 
     @Override
     public void createUsersTable() {
@@ -78,7 +78,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public List<User> getAllUsers() {
         List<User> list = null;
         try (Session session = sessionFactory.openSession()) {
-            list = session.createQuery("from User").list();
+            list = session.createQuery("from User",User.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         }
